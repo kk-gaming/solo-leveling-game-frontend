@@ -1,0 +1,50 @@
+"use client";
+import { useEffect, useState } from "react";
+import { computeStats, loadActivities } from "@/lib/storage";
+import type { Stats } from "@/lib/types";
+
+export default function Home() {
+  const [stats, setStats] = useState<Stats | null>(null);
+
+  useEffect(() => {
+    const acts = loadActivities();
+    setStats(computeStats(acts));
+  }, []);
+
+  return (
+    <div className="max-w-5xl mx-auto p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-semibold">Dashboard</h2>
+        <div className="space-x-2 text-sm">
+          <a className="underline" href="/log">Log</a>
+          <a className="underline" href="/history">History</a>
+        </div>
+      </div>
+
+      <section>
+        <h3 className="text-xl font-medium mb-3">Your Stats</h3>
+        {stats ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {Object.entries(stats).map(([k, v]) => (
+              <div key={k} className="border rounded-md p-3">
+                <div className="text-sm text-gray-600">{k}</div>
+                <div className="text-lg font-semibold">{v}</div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-600">No data yet. Start by logging an activity.</p>
+        )}
+      </section>
+
+      <section>
+        <div className="rounded-md border p-4 bg-gray-50">
+          <h4 className="font-medium mb-1">Tip</h4>
+          <p className="text-sm text-gray-700">
+            Activities add XP to multiple stats. Try a mix: workouts for Strength/Vitality, study for Intelligence/Focus, and meditation for Mindfulness.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
