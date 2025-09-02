@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { computeStats, loadActivities } from "@/lib/storage";
 import type { Stats } from "@/lib/types";
 
@@ -16,8 +17,8 @@ export default function Home() {
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-semibold">Dashboard</h2>
         <div className="space-x-2 text-sm">
-          <a className="underline" href="/log">Log</a>
-          <a className="underline" href="/history">History</a>
+          <Link className="underline" href="/log">Log</Link>
+          <Link className="underline" href="/history">History</Link>
         </div>
       </div>
 
