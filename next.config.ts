@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
-const repo = "solo-leveling-game";
+// Derive repo name automatically on GitHub Actions; allow override via env
+const derivedRepo = process.env.GITHUB_REPOSITORY?.split("/")[1];
+const fallbackRepo = "solo-leveling-game-frontend";
+const repo = (process.env.NEXT_PUBLIC_BASEPATH?.replace(/^\//, "") || derivedRepo || fallbackRepo);
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {

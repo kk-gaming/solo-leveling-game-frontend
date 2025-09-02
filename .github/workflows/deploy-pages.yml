@@ -3,9 +3,9 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [ master, main ]
-    paths:
-      - 'solo-leveling-game-frontend/**'
-      - '.github/workflows/deploy-pages.yml'
+    # Run on any change; GH Pages deploy only cares about frontend dir but root is simplest.
+    paths-ignore:
+      - '**/*.md'
 
 permissions:
   contents: read
@@ -19,9 +19,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: solo-leveling-game-frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,20 +28,22 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: 'solo-leveling-game-frontend/package-lock.json'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install deps
         run: npm ci
+        working-directory: ./
 
       - name: Build static export
         env:
           GITHUB_PAGES: 'true'
         run: npm run build
+        working-directory: ./
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'solo-leveling-game-frontend/out'
+          path: 'out'
 
   deploy:
     needs: build
