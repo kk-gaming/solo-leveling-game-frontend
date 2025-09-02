@@ -39,7 +39,7 @@ export default function LogPage() {
 
   return (
     <div className="max-w-xl mx-auto w-full p-6">
-      <h1 className="text-2xl font-semibold mb-4">Log Activity</h1>
+      <h1 className="text-2xl font-semibold mb-4 sl-gradient-text">Log Activity</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-1">Date</label>
@@ -95,7 +95,7 @@ export default function LogPage() {
             rows={3}
           />
         </div>
-        <button type="submit" className="bg-black text-white rounded-md px-4 py-2">
+        <button type="submit" className="sl-button rounded-md px-4 py-2">
           Save
         </button>
         {saved && <p className="text-green-700 text-sm">Saved!</p>}

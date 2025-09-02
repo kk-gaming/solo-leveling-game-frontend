@@ -24,3 +24,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Solo Leveling theme additions */
+:root {
+  --sl-bg-start: #050814;
+  --sl-bg-end: #0a1229;
+  --sl-cyan: #38bdf8;
+  --sl-purple: #8b5cf6;
+  --sl-text: #e6e8ee;
+  --sl-muted: #94a3b8;
+}
+
+body {
+  color: var(--sl-text);
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(56,189,248,0.12), transparent 60%),
+              radial-gradient(800px 400px at -10% 10%, rgba(139,92,246,0.10), transparent 60%),
+              linear-gradient(180deg, var(--sl-bg-start), var(--sl-bg-end));
+}
+
+/**** Utilities ****/
+.sl-gradient-text {
+  background: linear-gradient(90deg, var(--sl-cyan), var(--sl-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sl-card {
+  background: rgba(12, 18, 40, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow: 0 0 0 1px rgba(56,189,248,0.05) inset, 0 10px 30px rgba(0,0,0,0.4);
+}
+.sl-card:hover {
+  box-shadow: 0 0 0 1px rgba(56,189,248,0.15) inset, 0 14px 40px rgba(0,0,0,0.5);
+}
+
+.sl-button {
+  background: radial-gradient(120% 120% at 100% 0%, rgba(56,189,248,0.25), transparent 40%),
+              linear-gradient(90deg, rgba(56,189,248,0.9), rgba(139,92,246,0.9));
+  color: white;
+  border: 1px solid rgba(148,163,184,0.2);
+  box-shadow: 0 8px 24px rgba(56,189,248,0.25), 0 0 0 1px rgba(139,92,246,0.2) inset;
+}
+.sl-button:hover { filter: brightness(1.05); }
+.sl-button:active { transform: translateY(1px); }
+
+input[type="text"], input[type="number"], input[type="date"], select, textarea {
+  background: rgba(9, 14, 30, 0.8);
+  border: 1px solid rgba(148,163,184,0.25);
+  color: var(--sl-text);
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--sl-cyan);
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+}
+
+.nav-link { color: #c7d2fe; }
+.nav-link:hover { color: white; text-shadow: 0 0 12px rgba(139,92,246,0.6), 0 0 6px rgba(56,189,248,0.6); }
+

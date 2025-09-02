@@ -15,7 +15,7 @@ export default function HistoryPage() {
 
   return (
     <div className="max-w-3xl mx-auto w-full p-6 space-y-6">
-      <h1 className="text-2xl font-semibold">History</h1>
+      <h1 className="text-2xl font-semibold sl-gradient-text">History</h1>
 
       <section>
         <h2 className="text-xl font-medium mb-2">Aggregated Stats</h2>
@@ -38,19 +38,19 @@ export default function HistoryPage() {
         {items.length ? (
           <ul className="divide-y border rounded-md">
             {items.map((a) => (
-              <li key={a.id} className="p-3 flex items-center justify-between">
+              <li key={a.id} className="p-3 flex items-center justify-between sl-card">
                 <div>
                   <div className="font-medium">
                     {a.category}
-                    <span className="ml-2 text-sm text-gray-600">{a.date}</span>
+                    <span className="ml-2 text-sm text-gray-400">{a.date}</span>
                   </div>
-                  <div className="text-sm text-gray-700">
+                  <div className="text-sm text-gray-300">
                     {a.durationMin}m · Intensity {a.intensity}
                     {a.notes ? ` · ${a.notes}` : ""}
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xs text-gray-500">Score</div>
+                  <div className="text-xs text-gray-400">Score</div>
                   <div className="font-semibold">{a.score}</div>
                 </div>
               </li>

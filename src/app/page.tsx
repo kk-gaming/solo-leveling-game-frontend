@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-semibold">Dashboard</h2>
+        <h2 className="text-2xl font-semibold sl-gradient-text">Dashboard</h2>
         <div className="space-x-2 text-sm">
           <Link className="underline" href="/log">Log</Link>
           <Link className="underline" href="/history">History</Link>
@@ -27,8 +27,8 @@ export default function Home() {
         {stats ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {Object.entries(stats).map(([k, v]) => (
-              <div key={k} className="border rounded-md p-3">
-                <div className="text-sm text-gray-600">{k}</div>
+              <div key={k} className="sl-card rounded-md p-3">
+                <div className="text-sm text-gray-400">{k}</div>
                 <div className="text-lg font-semibold">{v}</div>
               </div>
             ))}
