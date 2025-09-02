@@ -53,17 +53,18 @@ export default function LogPage() {
         </div>
         <div>
           <label className="block text-sm font-medium mb-1">Category</label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value as ActivityCategory)}
-            className="w-full border rounded-md px-3 py-2"
-          >
+          <div className="flex flex-wrap gap-2">
             {categories.map((c) => (
-              <option key={c} value={c}>
+              <button
+                type="button"
+                key={c}
+                onClick={() => setCategory(c)}
+                className={`sl-chip ${category === c ? "active" : ""}`}
+              >
                 {c}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
         </div>
         <div>
           <label className="block text-sm font-medium mb-1">Duration (minutes)</label>
@@ -76,15 +77,19 @@ export default function LogPage() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Intensity (1-5)</label>
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={intensity}
-            onChange={(e) => setIntensity(Number(e.target.value))}
-            className="w-full border rounded-md px-3 py-2"
-          />
+          <label className="block text-sm font-medium mb-1">Intensity</label>
+          <div className="sl-segment">
+            {[1,2,3,4,5].map((i) => (
+              <button
+                type="button"
+                key={i}
+                data-active={intensity === i}
+                onClick={() => setIntensity(i)}
+              >
+                {i}
+              </button>
+            ))}
+          </div>
         </div>
         <div>
           <label className="block text-sm font-medium mb-1">Notes</label>

@@ -36,17 +36,20 @@ export default function HistoryPage() {
       <section>
         <h2 className="text-xl font-medium mb-2">Logged Activities</h2>
         {items.length ? (
-          <ul className="divide-y border rounded-md">
+          <ul className="space-y-2">
             {items.map((a) => (
-              <li key={a.id} className="p-3 flex items-center justify-between sl-card">
-                <div>
-                  <div className="font-medium">
-                    {a.category}
-                    <span className="ml-2 text-sm text-gray-400">{a.date}</span>
-                  </div>
-                  <div className="text-sm text-gray-300">
-                    {a.durationMin}m · Intensity {a.intensity}
-                    {a.notes ? ` · ${a.notes}` : ""}
+              <li key={a.id} className="p-3 flex items-center justify-between sl-card rounded-md">
+                <div className="flex items-start gap-3">
+                  <div className="sl-accent-bar" />
+                  <div>
+                    <div className="font-medium">
+                      {a.category}
+                      <span className="ml-2 text-sm text-gray-400">{a.date}</span>
+                    </div>
+                    <div className="text-sm text-gray-300">
+                      {a.durationMin}m · Intensity {a.intensity}
+                      {a.notes ? ` · ${a.notes}` : ""}
+                    </div>
                   </div>
                 </div>
                 <div className="text-right">

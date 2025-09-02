@@ -138,3 +138,8 @@ input:focus, select:focus, textarea:focus {
 /* Hero background utilities */
 .sl-hero-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.28; filter: saturate(1.1) contrast(1.05) brightness(0.85); }
 .sl-hero-overlay { position: absolute; inset: 0; background: radial-gradient(600px 240px at 80% 0%, rgba(56,189,248,0.18), transparent 60%), radial-gradient(460px 180px at 10% 10%, rgba(139,92,246,0.16), transparent 60%); }
+
+
+/* Route progress bar */
+.sl-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 50; background: rgba(0,0,0,0.1); }
+.sl-progress-bar { height: 100%; width: 0; transition: width .35s ease; background: linear-gradient(90deg, var(--sl-cyan), var(--sl-purple)); box-shadow: 0 0 12px rgba(56,189,248,.6), 0 0 12px rgba(139,92,246,.6); }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import NavTabs from "@/components/NavTabs";
+import RouteProgress from "@/components/RouteProgress";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,6 +36,7 @@ export default function RootLayout({
             </div>
             <NavTabs />
           </div>
+            <RouteProgress />
         </header>
         <main className="min-h-[calc(100vh-64px)]">
           {children}
