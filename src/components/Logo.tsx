@@ -18,11 +18,9 @@ function computeBasePath(): string {
 }
 
 export default function Logo() {
-  const base = computeBasePath();
-  const src = `${base}/solo-logo.svg`;
+  const src = "./solo-logo.svg"; // strictly relative to current base path
   return (
-    <Link href="/">
-      {/* Use a plain img to avoid any basePath quirks */}
+    <Link href="./">
       <img
         src={src}
         alt="Solo Leveling"
