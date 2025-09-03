@@ -3,8 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 
-import { getBasePath } from "@/lib/asset";
-
 const tabs = [
   { href: "/", label: "Dashboard", match: "root" as const },
   { href: "/log/", label: "Log", match: "log" as const },
@@ -13,14 +11,13 @@ const tabs = [
 
 export default function NavTabs() {
   const pathname = usePathname();
-  const base = getBasePath();
   const currentPath = (typeof window !== "undefined" ? window.location.pathname : pathname) || "/";
   const normalized = currentPath.endsWith("/") ? currentPath : currentPath + "/";
-  const atRoot = normalized === "/" || normalized === `${base}/`;
 
+  // Active detection that ignores a possible repo base prefix
   function isActive(match: "root" | "log" | "history") {
-    if (match === "root") return atRoot;
-    return normalized.endsWith(`/${match}/`);
+    if (match === "root") return /^(\/|\/[\w.-]+\/)$/i.test(normalized);
+    return new RegExp(`(?:^|\/)${match}\/?$`, "i").test(normalized);
   }
 
   return (
@@ -28,7 +25,7 @@ export default function NavTabs() {
       {tabs.map((t) => (
         <Link
           key={t.label}
-          href={`${base}${t.href}`}
+          href={t.href}
           aria-current={isActive(t.match) ? "page" : undefined}
           className={`tab-link nav-link inline-block relative pb-1 ${isActive(t.match) ? "text-white" : ""}` }
         >

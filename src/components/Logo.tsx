@@ -1,14 +1,10 @@
 "use client";
 import Link from "next/link";
-import { getBasePath } from "@/lib/asset";
-
 export default function Logo() {
-  const base = getBasePath();
-  const src = `${base}/solo-logo.svg`;
   return (
-    <Link href={`${base}/`}>
+    <Link href="/">
       <img
-        src={src}
+        src="/solo-logo.svg"
         alt="Solo Leveling"
         width={24}
         height={24}
