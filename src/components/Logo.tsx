@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 
 function computeBasePath(): string {
@@ -23,13 +22,13 @@ export default function Logo() {
   const src = `${base}/solo-logo.svg`;
   return (
     <Link href="/">
-      <Image
+      {/* Use a plain img to avoid any basePath quirks */}
+      <img
         src={src}
         alt="Solo Leveling"
         width={24}
         height={24}
-        priority
-        className="drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"
+        className="w-6 h-6 drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"
       />
     </Link>
   );
