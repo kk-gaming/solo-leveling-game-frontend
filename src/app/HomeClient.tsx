@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { computeStats, loadActivities } from "@/lib/storage";
 import type { Stats } from "@/lib/types";
+import { getHeroBackgroundUrl } from "@/lib/theme";
+
 
 export default function HomeClient() {
   const [stats, setStats] = useState<Stats | null>(null);
@@ -16,8 +18,7 @@ export default function HomeClient() {
       <div
         className="sl-hero-img"
         style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/15372909/pexels-photo-15372909.jpeg?auto=compress&cs=tinysrgb&w=1600')",
+          backgroundImage: `url(${getHeroBackgroundUrl()})`,
         }}
       />
       <div className="sl-hero-overlay" />
@@ -63,6 +64,9 @@ export default function HomeClient() {
             </p>
           </div>
         </section>
+      <div className="bg-credit">
+        Background: <a href="https://www.pexels.com/" target="_blank" rel="noreferrer">Pexels</a>
+      </div>
       </div>
     </>
   );
