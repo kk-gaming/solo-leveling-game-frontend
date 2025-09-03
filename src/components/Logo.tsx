@@ -1,26 +1,12 @@
 "use client";
 import Link from "next/link";
-
-function computeBasePath(): string {
-  if (typeof window === "undefined") {
-    const forced = process.env.NEXT_PUBLIC_BASEPATH?.replace(/^\/+/, "");
-    return forced ? `/${forced}` : "";
-  }
-  const forced = process.env.NEXT_PUBLIC_BASEPATH?.replace(/^\/+/, "");
-  if (forced) return `/${forced}`;
-  const host = window.location.hostname.toLowerCase();
-  const parts = window.location.pathname.split("/").filter(Boolean);
-  // On GitHub Pages: https://<user>.github.io/<repo>/...
-  if (host.endsWith("github.io") && parts.length) {
-    return `/${parts[0]}`;
-  }
-  return "";
-}
+import { getBasePath } from "@/lib/asset";
 
 export default function Logo() {
-  const src = "./solo-logo.svg"; // strictly relative to current base path
+  const base = getBasePath();
+  const src = `${base}/solo-logo.svg`;
   return (
-    <Link href="./">
+    <Link href={`${base}/`}>
       <img
         src={src}
         alt="Solo Leveling"
