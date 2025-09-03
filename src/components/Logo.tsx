@@ -4,7 +4,7 @@ export default function Logo() {
   return (
     <Link href="/">
       <img
-        src="/solo-logo.svg"
+        src="solo-logo.svg"
         alt="Solo Leveling"
         width={24}
         height={24}
